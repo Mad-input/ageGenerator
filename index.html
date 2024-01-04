@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./assets/images/favicon-32x32.png"
+    />
+    <link rel="stylesheet" href="./src/css/style.css" />
+    <title>Frontend Mentor | Age calculator app</title>
+  </head>
+  <body>
+    <article class="app">
+      <header class="app-header">
+        <div class="entries">
+          <label>
+            <span class="title-entrie">Day</span>
+            <input
+              type="text"
+              placeholder="DD"
+              autocomplete="off"
+              id="day"
+              min="1"
+              max="31"
+              data-id="0"
+            />
+            <span class="empty"></span>
+          </label>
+
+          <label>
+            <span class="title-entrie">Month</span>
+            <input
+              type="text"
+              placeholder="MM"
+              autocomplete="off"
+              id="month"
+              data-id="1"
+            />
+            <span class="empty"></span>
+          </label>
+
+          <label>
+            <span class="title-entrie">Year</span>
+            <input
+              type="text"
+              data-id="2"
+              placeholder="YYYY"
+              autocomplete="off"
+              id="year"
+            />
+            <span class="empty"></span>
+          </label>
+        </div>
+        <div class="decorate">
+          <button id="btnGenerate">
+            <img
+              src="./assets/images/icon-arrow.svg"
+              alt="arrow age year generate"
+            />
+          </button>
+        </div>
+      </header>
+
+      <div class="age-calculate">
+        <strong><span id="yearS">--</span> years</strong>
+        <strong><span id="monthS">--</span> months</strong>
+        <strong><span id="daysS">--</span> days</strong>
+      </div>
+    </article>
+
+    <script src="./src/js/main.js" type="module"></script>
+  </body>
+</html>
