@@ -1,15 +1,17 @@
 import { calcularEdad } from "./calcularEdad.js";
 import { esBisiesto, esNumerico } from "./condition.js";
 // HTML elements
-const btnGenerate = document.getElementById("btnGenerate");
-const year = document.getElementById("year");
-const month = document.getElementById("month");
-const day = document.getElementById("day");
+// atajo
+const $ = (selector) => document.querySelector(selector);
+const btnGenerate = $("#btnGenerate");
+const year = $("#year");
+const month = $("#month");
+const day = $("#day");
 const emptySpan = document.querySelectorAll(".empty");
 
-const yearS = document.getElementById("yearS");
-const monthS = document.getElementById("monthS");
-const dayS = document.getElementById("daysS");
+const yearS = $("#yearS");
+const monthS = $("#monthS");
+const dayS = $("#daysS");
 
 /**
  *
