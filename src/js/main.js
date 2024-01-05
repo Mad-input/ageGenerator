@@ -1,5 +1,5 @@
 import { calcularEdad } from "./calcularEdad.js";
-import { esBisiesto, esNumerico } from "./condition.js";
+import { esBisiesto } from "./condition.js";
 // HTML elements
 // atajo
 const $ = (selector) => document.querySelector(selector);
@@ -40,10 +40,10 @@ const renderDate = () => {
   let dayN = parseInt(day.value);
 
   // Se verifica si los datos ingresados son Numericos
-  if (esNumerico(yearN) && esNumerico(monthN) && esNumerico(dayN)) {
-    let yearN = parseInt(year.value);
-    let monthN = parseInt(month.value);
-    let dayN = parseInt(day.value);
+  if (isNaN(yearN) || isNaN(monthN) || isNaN(dayN)) {
+    // si se ingresan datos erroneos motrar un error
+    showError("Invalid dates", [day, year, month]);
+  } else {
     let anoActual = new Date().getFullYear();
 
     if (dayN < 1 || dayN > 31 || monthN < 1 || monthN > 12)
@@ -52,19 +52,13 @@ const renderDate = () => {
       return showError("Invalid: 1950 - actually Year", [year]);
 
     //Se verifica si el años es bisiesto, si es bisiesto algunos meses no tienen 31 dias
-    if (
-      (esBisiesto(yearN) && monthN == 3) ||
-      monthN == 4 ||
-      monthN == 6 ||
-      monthN == 9 ||
-      (monthN == 11 && dayN > 30)
-    ) {
+    if (esBisiesto(yearN) && monthN == 3 && dayN > 30) {
       showError("only 30 days", [day]);
     }
     // Severifica si el mes es febrero, en año bisiesto solo tiene 29 dias
     else if (esBisiesto(yearN) && monthN == 2 && dayN > 29)
       showError("only 29 days", [day]);
-    // No es biciesto
+    // No es bisiesto
     else {
       let date = `${yearN} ${monthN} ${dayN}`;
       const fechaDeNacimiento = new Date(date);
@@ -74,10 +68,6 @@ const renderDate = () => {
       monthS.innerHTML = meses;
       dayS.innerHTML = dias;
     }
-  }
-  // si se ingresan datos erroneos motrar un error
-  else {
-    showError("Invalid dates", [day, year, month]);
   }
 };
 
